@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Rice terraces stepping down the Sa Pa valley">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4d7ea8"/>
+      <stop offset="1" stop-color="#a7c6da"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#sky)"/>
+  <circle cx="450" cy="110" r="52" fill="#ffe9b0" opacity="0.9"/>
+  <path d="M0 260 L130 150 L250 260 Z" fill="#6b8f71"/>
+  <path d="M180 275 L320 140 L470 275 Z" fill="#6b8f71" opacity="0.85"/>
+  <path d="M400 265 L510 180 L600 265 Z" fill="#6b8f71" opacity="0.7"/>
+  <rect y="265" width="600" height="135" fill="#3f5e45"/>
+  <path d="M0 300 Q150 275 300 300 T600 300 L600 400 L0 400 Z" fill="#4d7ea8" opacity="0.45"/>
+</svg>
