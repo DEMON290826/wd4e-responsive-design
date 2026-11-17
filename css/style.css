@@ -1,4 +1,4 @@
-body {
+﻿body {
     background-color: #dedede;
 }
 
@@ -46,7 +46,7 @@ div {
 @media screen and (min-width: 772px) {
     div {
         display: inline-block;
-        width: 45%;
+        width: 45vw;
     }
 
     div img {
@@ -61,6 +61,7 @@ div {
 @media screen and (min-width: 998px) {
     div {
         display: inline-block;
-        width: 30%;
+        width: 30vw;
     }
 }
+
