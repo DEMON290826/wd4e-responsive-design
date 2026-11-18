@@ -1,3 +1,12 @@
+/* ============================================================
+   Advanced Styling with Responsive Design - Final Project
+   Vietnam Landscapes photo gallery
+   Mobile first: every rule below the header is the mobile view.
+   Fixed widths are never used, only fluid fr units and percentages.
+   ============================================================ */
+
+/* ---------- 1. MOBILE VIEW (base CSS, no media query) ---------- */
+
 html {
     scroll-behavior: smooth;
 }
@@ -6,35 +15,34 @@ body {
     margin: 0;
     background-color: #dedede;
     color: #1a1a1a;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
     text-align: center;
-    font-size: 32px;
+    font-size: 1.75rem;
     margin: 16px 0;
 }
 
 p {
-    font-size: 20px;
-    line-height: 1.5;
+    font-size: 1.125rem;
+    line-height: 1.55;
     margin: 0 0 16px;
     padding: 0 10px;
     text-align: center;
 }
 
 a {
-    color: #000;
-    text-decoration: none;
+    color: #000000;
+    text-decoration: underline;
 }
 
-img {
-    display: block;
-    width: 100%;
-    height: auto;
+footer {
+    padding: 20px;
+    text-align: center;
 }
 
-/* Mobile first: one column grid with a 10px gap */
+/* One column grid with a 10px gap between rows and columns. */
 .grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -43,60 +51,105 @@ img {
 }
 
 figure {
+    position: relative;
     margin: 0;
     padding: 10px;
-    border: 3px solid #444;
+    border: 3px solid #444444;
     background-color: #ffffff;
     color: #1a1a1a;
     overflow: hidden;
 }
 
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 figcaption {
     padding-top: 8px;
     text-align: center;
-    font-size: 18px;
+    font-size: 1rem;
 }
 
-footer {
-    padding: 20px;
-    text-align: center;
-}
-
-/* Tablet view */
-@media screen and (min-width: 772px) {
+/* ---------- 2. TABLET VIEW: triggers at 772px ---------- */
+/* The grid display is inherited from the mobile view and is not repeated here. */
+@media (min-width: 772px) {
     .grid {
         grid-template-columns: 1fr 1fr;
     }
 
+    /* Circular shape */
     figure {
         border-radius: 50%;
+        aspect-ratio: 1 / 1;
     }
 
+    img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* The caption sits inside the circle so the figure stays round. */
+    figcaption {
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        bottom: 9%;
+        padding: 5px 6px;
+        font-size: 0.8rem;
+        line-height: 1.2;
+        border-radius: 8px;
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+
+    /* The last figure takes up both columns. */
     figure:last-child {
         grid-column: span 2;
+        aspect-ratio: 2 / 1;
     }
 }
 
-/* Large screen view */
-@media screen and (min-width: 992px) {
+/* ---------- 3. LARGE SCREEN VIEW: triggers at 992px ---------- */
+@media (min-width: 992px) {
+    /* Border radius removed from all of the figures. */
     figure {
         border-radius: 0;
+        aspect-ratio: 3 / 2;
     }
 
+    /* Every third figure takes up both columns. */
     figure:nth-child(3n) {
         grid-column: span 2;
+        aspect-ratio: 3 / 1;
+    }
+
+    /* The figures are rectangles again, so the caption becomes a full width bar. */
+    figcaption {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 8px;
+        font-size: 1rem;
+        border-radius: 0;
     }
 }
 
-/* Respect the user's motion preference */
-@media screen and (prefers-reduced-motion: reduce) {
+/* ---------- 4. PREFERS REDUCED MOTION ---------- */
+/* The scroll behaviour is removed, so "Jump to the Top" no longer animates. */
+@media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
     }
 }
 
-/* Dark colour scheme */
-@media screen and (prefers-color-scheme: dark) {
+/* ---------- 5. PREFERS COLOR SCHEME: DARK ---------- */
+/* Default colour scheme is light. In dark mode the figures get all three changes. */
+@media (prefers-color-scheme: dark) {
     body {
         background-color: #121212;
         color: #ffe066;
@@ -106,9 +159,15 @@ footer {
         color: #ffe066;
     }
 
+    /* Dark background colour, light font colour, black border. */
     figure {
         background-color: #262626;
         color: #ffe066;
         border-color: #000000;
+    }
+
+    figcaption {
+        background-color: #000000;
+        color: #ffe066;
     }
 }
